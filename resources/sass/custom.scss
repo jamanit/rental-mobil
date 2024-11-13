@@ -1,0 +1,44 @@
+/* custom default */
+.width-1 {
+    width: 1% !important;
+}
+
+.width-100 {
+    width: 100% !important;
+}
+
+.img-list {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+}
+
+.img-input {
+    width: 42px !important;
+    height: 42px !important;
+    object-fit: cover !important;
+}
+
+.radius-10 {
+    border-radius: 10px !important;
+}
+
+.radius-top-10 {
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+.radius-bottom-10 {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.radius-left-10 {
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.radius-right-10 {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}

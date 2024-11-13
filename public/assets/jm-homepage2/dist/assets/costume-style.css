@@ -1,0 +1,41 @@
+ 
+ /* Animasi untuk menu slide dari kiri */
+.slide-left {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.slide-left-active {
+    transform: translateX(0%);
+}
+
+/* Overlay yang meredupkan background di luar menu */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 16rem;
+    /* Mulai setelah lebar menu (64px x 4) */
+    width: calc(100% - 16rem);
+    /* Sisakan area untuk sidebar */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Scrolling Up Down*/
+.scroll-button {
+    transition: opacity 0.3s;
+    opacity: 0.8;
+    z-index: 20;
+}
+
+.scroll-button:hover {
+    opacity: 1;
+}
