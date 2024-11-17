@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 11:28 AM
+-- Generation Time: Nov 17, 2024 at 04:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -149,7 +149,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('cNVqBMOgg0EcAX0y8ifVYv2mgRwJx55IFJyfE13i', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicGlReXBZUXluNXpZOWx5VmZtMThxN0VjZTNac3BVSEozYTF0SjBEUCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1731061701);
+('2LBTvshVTVHx8k25JdJCoP0AGpJl1myGXrZEP4ok', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY2ZLVzNsOWhUN2Z0NDBOajRTd242WlNCcGhuaFY0azVMTWY1aG1pMiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXR0aW5ncy91dWlkMTIzNC9lZGl0Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Nzt9', 1731785454);
 
 -- --------------------------------------------------------
 
@@ -178,7 +178,7 @@ CREATE TABLE `tb_business_profiles` (
 --
 
 INSERT INTO `tb_business_profiles` (`id`, `created_at`, `updated_at`, `uuid`, `logo`, `address`, `owner_name`, `about`, `google_maps`, `brand_name`, `brand_founding_date`, `brand_email`, `brand_website`) VALUES
-(1, '2024-10-18 16:19:50', '2024-11-08 10:28:11', 'uuid1234', 'image/qxv41L5jDOP9YrBfFcPqwg6fDGA1bEIelJiLtz1r.png', 'Indonesia', 'Anonim', '<p><strong>Lorem ipsum</strong> dolor sit, amet consectetur adipisicing elit. Vitae hic totam culpa unde optio, possimus animi voluptate quia atque repudiandae, distinctio a! Nam nobis eveniet dolorum eaque natus sint eos architecto quo provident ducimus voluptatum illum repudiandae est excepturi alias officiis magnam, quasi rem iusto iste quidem? Aut perferendis facilis eius repellat, error fugiat consequatur adipisci quos eum amet nulla quaerat alias aspernatur, quo accusamus labore dolorem nisi reprehenderit ab itaque accusantium in quisquam. Autem quia voluptatem a itaque. Unde sunt consequuntur laborum explicabo quasi, expedita optio necessitatibus quod officiis a repellat beatae id soluta corrupti quidem ab inventore tempora.</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7976.439948837537!2d103.5518596658181!3d-1.621851021281201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1730092779448!5m2!1sid!2sid\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'Persewaan Mobil', '2024-10-23', 'email@gmail.com', 'http://localhost');
+(1, '2024-10-18 16:19:50', '2024-11-15 12:43:55', 'uuid1234', 'image/HdS9nDT0NPBog1GuhfDXJbZxmyXK7K8whFoMnLDi.jpg', 'Indonesia', 'Anonim', '<p><strong>Lorem ipsum</strong> dolor sit, amet consectetur adipisicing elit. Vitae hic totam culpa unde optio, possimus animi voluptate quia atque repudiandae, distinctio a! Nam nobis eveniet dolorum eaque natus sint eos architecto quo provident ducimus voluptatum illum repudiandae est excepturi alias officiis magnam, quasi rem iusto iste quidem? Aut perferendis facilis eius repellat, error fugiat consequatur adipisci quos eum amet nulla quaerat alias aspernatur, quo accusamus labore dolorem nisi reprehenderit ab itaque accusantium in quisquam. Autem quia voluptatem a itaque. Unde sunt consequuntur laborum explicabo quasi, expedita optio necessitatibus quod officiis a repellat beatae id soluta corrupti quidem ab inventore tempora.</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7976.439948837537!2d103.5518596658181!3d-1.621851021281201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1730092779448!5m2!1sid!2sid\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'Rosa Group Rent Car', '2024-10-23', 'email@gmail.com', 'http://localhost');
 
 -- --------------------------------------------------------
 
@@ -353,8 +353,9 @@ CREATE TABLE `tb_mobils` (
 --
 
 INSERT INTO `tb_mobils` (`id`, `created_at`, `updated_at`, `uuid`, `no_polisi`, `merk`, `model`, `tahun`, `warna`, `harga_harian`, `status`, `foto_1`, `foto_2`, `foto_3`, `foto_4`) VALUES
-(7, '2024-11-07 14:20:27', '2024-11-08 04:49:08', '25278722-1d5a-46af-955e-8358fc780cb5', '01', '02', '03', '04', '05', '50000', 'Tersedia', 'mobil/zzB2KcEGtdxKyYWPpiPzgBiOLTeokRsOiLxumtEK.png', 'mobil/bMYza8QD4Xb9ilIOCWC1cRoA4Tlw6tBcZ1gMnv7U.jpg', 'mobil/h5QW9eEHo3aemA7u0rPhVarfdcHxjToGR5nhHHgH.png', 'mobil/K9AT75aNuB6NC5sIQlTBU5mrG5yX7NLMaBPbKzrI.jpg'),
-(8, '2024-11-07 14:36:54', '2024-11-08 04:48:58', 'a8909702-9e15-4847-b751-31d1623465e2', '02', '123', '321', '231', '312', '100000', 'Tersedia', 'mobil/BA7jS7qIE5QYu3gyEDGMeTJc3s13JFlFSSulYFdI.jpg', NULL, NULL, NULL);
+(9, '2024-11-15 12:36:23', '2024-11-15 12:36:23', 'b659176f-e975-4b96-9d4f-fcedb9bf69dc', 'AA 3435 BB', 'Honda Jazz', 'A', '2017', 'Putih', '100000', 'Tersedia', 'mobil/VBNsERzciefib47iEUR5o7H9tSxH1LEct0VQuGXk.jpg', 'mobil/WGhAncRoRpIYiDXgEekXozuRj48140GJda9R88kH.jpg', NULL, NULL),
+(10, '2024-11-15 12:37:59', '2024-11-15 12:37:59', 'a7d616dd-d7bb-40b6-8d17-730315f37b18', 'AA 3421 BB', 'Avanza', 'B', '2015', 'Hitam', '80000', 'Tersedia', 'mobil/GwG6BsP2Qz6an5AKAxokjENE4nmojeKz4qANJbWQ.jpg', NULL, NULL, NULL),
+(11, '2024-11-15 12:40:37', '2024-11-15 12:40:37', 'f13b0708-93d1-40d0-9bf4-ad9f8e1617a8', 'AA 3455 BB', 'Rush', 'C', '2018', 'Putih', '90000', 'Tersedia', 'mobil/x2gQyyi63HeFI3wSbcyOQaEY5WeYk1EOGSSHFOde.jpg', 'mobil/0IqZmtrTenKeRjhBNq3RkcCZXjB8qQS06ycljV7G.png', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -479,7 +480,7 @@ CREATE TABLE `tb_settings` (
 --
 
 INSERT INTO `tb_settings` (`id`, `created_at`, `updated_at`, `uuid`, `home_cover_image`, `home_cover_text`) VALUES
-(1, '2024-10-19 11:59:45', '2024-11-08 10:14:48', 'uuid1234', 'image/spm7SpJ3Jd5c78QFyIqfMtV5lr3pzsZER19WVTHc.svg', '<p>Text cover beranda…</p>');
+(1, '2024-10-19 11:59:45', '2024-11-16 18:57:15', 'uuid1234', 'image/3V2Q321ydPBpMIyE2eIU2iKOxmIvW3oHkcVCRLJs.jpg', '<p>Text cover beranda…</p>');
 
 -- --------------------------------------------------------
 
@@ -718,7 +719,7 @@ ALTER TABLE `tb_metode_pembayarans`
 -- AUTO_INCREMENT for table `tb_mobils`
 --
 ALTER TABLE `tb_mobils`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_pembayarans`

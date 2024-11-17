@@ -9,7 +9,7 @@
     <section id="home" class="relative w-full h-screen mt-0 overflow-hidden bg-gray-800">
         <div class="relative w-full h-full overflow-hidden">
             <div class="slide absolute w-full h-full">
-                <img src="{{ Storage::url($setting->home_cover_image) }}" alt="Cover" class="w-full h-full object-cover object-left">
+                <img src="{{ Storage::url($setting->home_cover_image) }}" alt="Cover" class="w-full h-full object-cover object-left opacity-90">
                 <div class="absolute inset-0 flex items-center justify-center text-center z-10">
                     <div class="bg-black bg-opacity-50 rounded-lg p-4 m-8" data-aos="fade-in">
                         <div class="text-gray-200 text-base sm:text-xl lg:text-2xl font-semibold">
@@ -27,85 +27,138 @@
         </div>
     </section>
 
-    <!-- services -->
-    <section id="services" class="relative w-full pt-16 bg-gray-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <h2 class="text-3xl text-center font-bold text-purple-400 mb-4">Services</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- car   -->
+    <section id="car" class="relative w-full pt-16 bg-white">
+        <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 overflow-hidden">
+            <h2 class="text-3xl text-center font-bold text-blue-400 mb-8">Mobil Rental</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4 pb-10">
+                @foreach ($mobil as $item)
+                    @php
+                        // Membuat array foto yang valid
+                        $validImages = [$item->foto_1, $item->foto_2, $item->foto_3, $item->foto_4];
+                        // Menyaring gambar yang ada
+                        $validImages = array_filter($validImages);
+                        $imageCount = count($validImages);
+                    @endphp
 
-                @foreach ($services as $item)
-                    <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
-                        <div class="text-purple-400 text-5xl mr-4">
-                            <i class="{{ $item->icon }}"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-lg">{{ $item->title }}</h3>
-                            <p class="text-gray-600">{{ $item->description }}</p>
-                        </div>
-                    </div>
-                @endforeach
+                    <!-- Card Wrapper for each vehicle -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-2xl">
 
-            </div>
-        </div>
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1" d="M0,224L48,208C96,192,192,160,288,160C384,160,480,192,576,213.3C672,235,768,245,864,234.7C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-        </svg>
-    </section>
-
-    <!-- template -->
-    <section id="template" class="relative w-full pt-16 bg-white">
-        <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <h2 class="text-3xl text-center font-bold text-purple-400 mb-8">Template</h2>
-            <div id="templates" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-
-                @foreach ($templates as $item)
-                    <div class="shadow-md border border-gray-300 transition-transform transform duration-300 hover:scale-105 rounded-lg relative">
-                        <div class="absolute top-2 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 shadow-lg rounded-l-lg {{ $item->percent_discount > 0 ? 'block' : 'hidden' }}">
-                            {{ $item->percent_discount }}% Diskon
-                        </div>
-                        <div class="w-full h-56 flex items-center justify-center">
-                            <img src="{{ Storage::url($item->image) }}" alt="Deskripsi Gambar" class="object-contain max-h-full max-w-full p-1">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-base font-semibold">{{ $item->template_name }}</h3>
-                            <p class="text-xs text-gray-600">{{ $item->template_type->template_type_name }}</p>
-                            <div class="flex justify-between items-center mt-4 text-sm">
-                                @if ($item->percent_discount <= 0)
-                                    <p class="text-green-500 font-semibold">Rp. {{ number_format($item->price) }}</p>
-                                @else
-                                    <p class="text-gray-600 line-through">Rp. {{ number_format($item->price) }}</p>
-                                    <p class="text-green-500 font-semibold">Rp. {{ number_format($item->total_amount) }}</p>
-                                @endif
+                        <div class="relative w-full" id="carousel-{{ $item->id }}">
+                            <div class="overflow-hidden relative">
+                                <!-- Carousel Inner -->
+                                <div class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0%);">
+                                    @foreach ($validImages as $index => $image)
+                                        <div class="carousel-item flex-shrink-0 w-full">
+                                            <img src="{{ Storage::url($image) }}" class="w-full h-56 object-cover" alt="Slide {{ $index + 1 }}">
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
+
+                            <!-- Carousel Controls (Menonaktifkan tombol jika hanya ada satu gambar) -->
+                            @if ($imageCount > 1)
+                                <!-- Previous Button -->
+                                <button class="absolute top-1/2 left-4 transform -translate-y-1/2 px-4 py-2 bg-gray-800 opacity-80 text-white rounded-full" id="prev-{{ $item->id }}">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <!-- Next Button -->
+                                <button class="absolute top-1/2 right-4 transform -translate-y-1/2 px-4 py-2 bg-gray-800 opacity-80 text-white rounded-full" id="next-{{ $item->id }}">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            @endif
                         </div>
-                        <div class="p-4 flex justify-between">
-                            <a href="{{ asset($item->example_url) }}" target="_blank" class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
-                                Lihat Contoh
-                            </a>
+
+
+                        <!-- Card Content with Vehicle Info -->
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">{{ $item->merk }} {{ $item->model }}</h3>
+                            <table class="table-auto w-full text-left text-sm">
+                                <tr>
+                                    <th class="pr-4">No. Polisi:</th>
+                                    <td>{{ $item->no_polisi }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="pr-4">Tahun:</th>
+                                    <td>{{ $item->tahun }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="pr-4">Warna:</th>
+                                    <td>{{ $item->warna }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="pr-4">Harga Harian:</th>
+                                    <td>Rp. {{ number_format($item->harga_harian) }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="pr-4">Status:</th>
+                                    <td>{{ $item->status }}</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <div class="flex justify-center mt-4">
-                <button id="load-more-template" class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
-                    Lihat templat lainnya
-                </button>
+            {{-- pagination --}}
+            <div class="flex justify-between items-center mb-4">
+                @if ($mobil->total() > 0)
+                    <div class="text-sm text-gray-700 mb-4">
+                        Menampilkan {{ $mobil->firstItem() }} hingga {{ $mobil->lastItem() }} dari {{ $mobil->total() }} hasil
+                    </div>
+                @endif
+
+                @if ($mobil->hasPages())
+                    <ul class="flex justify-center space-x-2">
+                        {{-- Previous Page Link --}}
+                        @if ($mobil->onFirstPage())
+                            <li class="disabled" aria-disabled="true">
+                                <span class="px-4 py-2 border rounded-md bg-gray-200 text-gray-500 cursor-not-allowed">&laquo;</span>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ $mobil->previousPageUrl() }}#car" rel="prev" class="px-4 py-2 border rounded-md bg-white text-gray-700 hover:bg-blue-500 hover:text-white">&laquo;</a>
+                            </li>
+                        @endif
+
+                        {{-- Pagination Elements --}}
+                        @for ($page = 1; $page <= $mobil->lastPage(); $page++)
+                            @if ($page == $mobil->currentPage())
+                                <li aria-current="page">
+                                    <span class="px-4 py-2 border rounded-md bg-blue-500 text-white">{{ $page }}</span>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ $mobil->url($page) }}#car" class="px-4 py-2 border rounded-md bg-white text-gray-700 hover:bg-blue-500 hover:text-white">{{ $page }}</a>
+                                </li>
+                            @endif
+                        @endfor
+
+                        {{-- Next Page Link --}}
+                        @if ($mobil->hasMorePages())
+                            <li>
+                                <a href="{{ $mobil->nextPageUrl() }}#car" rel="next" class="px-4 py-2 border rounded-md bg-white text-gray-700 hover:bg-blue-500 hover:text-white">&raquo;</a>
+                            </li>
+                        @else
+                            <li class="disabled" aria-disabled="true">
+                                <span class="px-4 py-2 border rounded-md bg-gray-200 text-gray-500 cursor-not-allowed">&raquo;</span>
+                            </li>
+                        @endif
+                    </ul>
+                @endif
             </div>
         </div>
 
+        <!-- Decorative SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#d1d5db" fill-opacity="1" d="M0,96L48,122.7C96,149,192,203,288,218.7C384,235,480,213,576,192C672,171,768,149,864,154.7C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
+            <path fill="#d1d5db" fill-opacity="1" d="M0,96L48,122.7C96,149,192,203,288,218.7C384,235,480,213,576,192C672,171,768,149,864,154.7C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
     </section>
 
     <!-- about -->
     <section id="about" class="relative w-full pt-16 bg-gray-300">
         <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <h2 class="text-3xl text-center font-bold text-purple-400 mb-4">About Us</h2>
+            <h2 class="text-3xl text-center font-bold text-blue-400 mb-4">Tentang Kami</h2>
             <div class="text-gray-700 leading-relaxed text-justify" data-aos="zoom-in">
                 {!! $business_profile->about !!}
             </div>
@@ -120,35 +173,13 @@
     <!-- contact -->
     <section id="contact" class="relative w-full py-16 bg-white">
         <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <h2 class="text-3xl text-center font-bold text-purple-400 mb-8">Contact</h2>
+            <h2 class="text-3xl text-center font-bold text-blue-400 mb-8">Kontak</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Kolom Kiri: Formulir -->
                 <div data-aos="fade-right">
-                    <form id="contact-form" onsubmit="sendMessage(event, 'bg-purple-500')">
-                        <div class="mb-4">
-                            <label for="name" class="mb-2 block text-left text-sm font-semibold text-gray-800">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Enter Name" class="w-full rounded-lg border border-purple-400 p-3 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="mb-2 block text-left text-sm font-semibold text-gray-800">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Enter Email" class="w-full rounded-lg border border-purple-400 p-3 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="mb-2 block text-left text-sm font-semibold text-gray-800">Message</label>
-                            <textarea name="message" id="message" placeholder="Enter Message" class="w-full rounded-lg border border-purple-400 p-3 focus:outline-none focus:ring-2 focus:ring-purple-400" rows="2"></textarea>
-                        </div>
-                        <button type="submit" class="mt-4 w-full rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
-                            <i class="fas fa-paper-plane"></i> SEND
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Kolom Kanan: Media Sosial -->
-                <div class="flex flex-col items-start" data-aos="fade-left">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Follow Us</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Ikuti Kami</h3>
                     <div class="flex space-x-4 mb-4">
                         @foreach ($contacts as $item)
-                            <a href="{{ $item->url }}" class="text-gray-800 hover:text-purple-400 text-2xl" target="_blank">
+                            <a href="{{ $item->url }}" class="text-gray-800 hover:text-blue-400 text-2xl" target="_blank">
                                 <i class="{{ $item->icon }}"></i>
                             </a>
                         @endforeach
@@ -168,108 +199,48 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        document.addEventListener('DOMContentLoaded', function() {
+            @foreach ($mobil as $item)
+                // Menggunakan template literal untuk memberikan nama unik pada variabel
+                const carousel_{{ $item->id }} = document.getElementById('carousel-{{ $item->id }}');
+                const prevButton_{{ $item->id }} = document.getElementById('prev-{{ $item->id }}');
+                const nextButton_{{ $item->id }} = document.getElementById('next-{{ $item->id }}');
+                const slides_{{ $item->id }} = carousel_{{ $item->id }}.querySelectorAll('.carousel-item');
+                const totalSlides_{{ $item->id }} = slides_{{ $item->id }}.length;
+                let currentIndex_{{ $item->id }} = 0;
+
+                // Fungsi untuk update transformasi carousel
+                function updateCarousel_{{ $item->id }}() {
+                    const offset = -100 * currentIndex_{{ $item->id }};
+                    carousel_{{ $item->id }}.querySelector('.flex').style.transform = `translateX(${offset}%)`;
                 }
-            });
 
-            $('#contact-form').on('submit', function(event) {
-                event.preventDefault();
+                // Menyembunyikan tombol jika hanya ada satu gambar
+                if (totalSlides_{{ $item->id }} <= 1) {
+                    if (prevButton_{{ $item->id }}) prevButton_{{ $item->id }}.style.display = 'none';
+                    if (nextButton_{{ $item->id }}) nextButton_{{ $item->id }}.style.display = 'none';
+                }
 
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/send-contact-form',
-                    data: formData,
-                    success: function(response) {
-                        Swal.fire({
-                            toast: true,
-                            position: 'top-end',
-                            icon: 'success',
-                            title: response.message,
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                        });
-                        $('#contact-form')[0].reset();
-                    },
-                    error: function(xhr) {
-                        if (xhr.status === 422) {
-                            let errors = xhr.responseJSON.errors;
-                            let errorMessage = '';
-                            for (let key in errors) {
-                                errorMessage += errors[key][0] + '\n';
-                            }
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Validation Error',
-                                text: errorMessage,
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong!',
-                            });
+                // Navigasi ke gambar berikutnya
+                if (nextButton_{{ $item->id }}) {
+                    nextButton_{{ $item->id }}.addEventListener('click', function() {
+                        if (currentIndex_{{ $item->id }} < totalSlides_{{ $item->id }} - 1) {
+                            currentIndex_{{ $item->id }}++;
+                            updateCarousel_{{ $item->id }}();
                         }
-                    }
-                });
-            });
-        });
-    </script>
-
-    <script>
-        let offset = {{ count($templates) }};
-
-        $('#load-more-template').on('click', function() {
-            $.ajax({
-                url: '/load-more-template',
-                type: 'GET',
-                data: {
-                    offset: offset
-                },
-                success: function(data) {
-                    if (data.length > 0) {
-                        data.forEach(item => {
-                            $('#templates').append(`
-                                <div class="shadow-md border border-gray-300 transition-transform transform duration-300 hover:scale-105 rounded-lg relative">
-                                    <div class="absolute top-2 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 shadow-lg rounded-l-lg ${item.percent_discount > 0 ? 'block' : 'hidden'}">
-                                        ${item.percent_discount}% Diskon
-                                    </div>
-                                    <div class="w-full h-56 flex items-center justify-center">
-                                        <img src="${item.image}" alt="Deskripsi Gambar" class="object-contain max-h-full max-w-full p-1">
-                                    </div>
-                                    <div class="p-4">
-                                        <h3 class="text-base font-semibold">${item.template_name}</h3>
-                                        <p class="text-xs text-gray-600">${item.template_type_name}</p>
-                                        <div class="flex justify-between items-center mt-4 text-sm">
-                                            ${item.percent_discount <= 0 ?
-                                                `<p class="text-green-500 font-semibold">Rp. ${item.price}</p>` :
-                                                `<p class="text-gray-600 line-through">Rp. ${item.price}</p> 
-                                                                                                                     <p class="text-green-500 font-semibold">Rp. ${item.total_amount}</p>`
-                                            }
-                                        </div>
-                                    </div>
-                                    <div class="p-4 flex justify-between">
-                                        <a href="${item.example_url}" target="_blank" class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
-                                           Lihat Contoh
-                                        </a>
-                                    </div>
-                                </div>
-                            `);
-                        });
-                        offset += data.length;
-                    } else {
-                        $('#load-more-template').text('Tidak ada lagi templat yang tersedia').prop('disabled', true);
-                    }
-                },
-                error: function() {
-                    alert('Terjadi kesalahan saat memuat templat.');
+                    });
                 }
-            });
+
+                // Navigasi ke gambar sebelumnya
+                if (prevButton_{{ $item->id }}) {
+                    prevButton_{{ $item->id }}.addEventListener('click', function() {
+                        if (currentIndex_{{ $item->id }} > 0) {
+                            currentIndex_{{ $item->id }}--;
+                            updateCarousel_{{ $item->id }}();
+                        }
+                    });
+                }
+            @endforeach
         });
     </script>
 @endpush

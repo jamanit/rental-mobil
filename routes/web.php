@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('home');
 });
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // route auth
 Auth::routes();

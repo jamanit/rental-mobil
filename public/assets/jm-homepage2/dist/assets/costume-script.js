@@ -83,32 +83,32 @@ window.addEventListener('resize', function () {
 function updateNavbarStyles() {
   if (window.scrollY > 50) { // Adjust number as needed
     navbar.classList.remove('bg-transparent');
-    navbar.classList.add('bg-purple-500', 'shadow-md'); // Add background color and shadow
+    navbar.classList.add('bg-blue-500', 'shadow-md'); // Add background color and shadow
 
-    mobileMenuButton.classList.remove('hover:text-purple-500');
+    mobileMenuButton.classList.remove('hover:text-blue-500');
     mobileMenuButton.classList.add('hover:text-gray-800');
 
-    brandName.classList.remove('hover:text-purple-500');
+    brandName.classList.remove('hover:text-blue-500');
     brandName.classList.add('hover:text-gray-800');
 
     navbarLinks.classList.add('hover:text-gray-800'); // Add hover effect class
     navbarLinks.querySelectorAll('a').forEach(link => {
-      link.classList.remove('hover:text-purple-500'); // Remove previous hover effect
+      link.classList.remove('hover:text-blue-500'); // Remove previous hover effect
       link.classList.add('hover:text-gray-800'); // Add new hover effect
     });
   } else {
     navbar.classList.add('bg-transparent');
-    navbar.classList.remove('bg-purple-500', 'shadow-md'); // Remove background color and shadow
+    navbar.classList.remove('bg-blue-500', 'shadow-md'); // Remove background color and shadow
 
-    mobileMenuButton.classList.add('hover:text-purple-500');
+    mobileMenuButton.classList.add('hover:text-blue-500');
     mobileMenuButton.classList.remove('hover:text-gray-800');
 
-    brandName.classList.add('hover:text-purple-500');
+    brandName.classList.add('hover:text-blue-500');
     brandName.classList.remove('hover:text-gray-800');
 
     navbarLinks.classList.remove('hover:text-gray-800'); // Remove hover effect class
     navbarLinks.querySelectorAll('a').forEach(link => {
-      link.classList.add('hover:text-purple-500'); // Restore previous hover effect
+      link.classList.add('hover:text-blue-500'); // Restore previous hover effect
       link.classList.remove('hover:text-gray-800'); // Remove gray hover effect
     });
   }
@@ -169,6 +169,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Tambahkan event listener untuk tombol scroll down
   scrollDownButton.addEventListener("click", scrollToBottom);
 });
-
-
 

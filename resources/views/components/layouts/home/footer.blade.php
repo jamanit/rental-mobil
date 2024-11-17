@@ -8,7 +8,7 @@
             </div>
             <div class="flex space-x-4">
                 @foreach ($contacts as $item)
-                    <a href="{{ $item->url }}" class="hover:text-purple-400 text-2xl" target="_blank">
+                    <a href="{{ $item->url }}" class="hover:text-blue-400 text-2xl" target="_blank">
                         <i class="{{ $item->icon }}"></i>
                     </a>
                 @endforeach
